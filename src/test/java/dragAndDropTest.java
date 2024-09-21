@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.DragAndDropOptions.to;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -28,5 +29,9 @@ public class dragAndDropTest {
                 .clickAndHold().moveToElement($("#column-a"))
                 .release().perform();
         $("#column-a").shouldHave(text("A"));
+
+        // Пример использования вместо actions() dragAndDrop()
+        $("#column-a").dragAndDrop(to("#column-b"));
+        $("#column-b").shouldHave(text("A"));
     }
 }
