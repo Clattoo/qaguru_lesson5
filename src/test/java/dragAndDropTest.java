@@ -15,8 +15,10 @@ public class dragAndDropTest {
     }
 
     @Test
-    void replaceElementTest() {
+    void replaceElementActionsTest() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
+        $("#column-a").shouldHave(text("A"));
+        $("#column-b").shouldHave(text("B"));
 
         // Проверка перетаскивание квадрата А к квадрату B в правую сторону
         actions().moveToElement($("#column-a"))
@@ -29,8 +31,14 @@ public class dragAndDropTest {
                 .clickAndHold().moveToElement($("#column-a"))
                 .release().perform();
         $("#column-a").shouldHave(text("A"));
+    }
 
-        // Пример использования вместо actions() dragAndDrop()
+    @Test
+    void replaceElementDragAndDropTest() {
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+        $("#column-a").shouldHave(text("A"));
+        $("#column-b").shouldHave(text("B"));
+
         $("#column-a").dragAndDrop(to("#column-b"));
         $("#column-b").shouldHave(text("A"));
 
