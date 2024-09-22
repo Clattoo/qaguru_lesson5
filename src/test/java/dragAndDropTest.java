@@ -33,5 +33,8 @@ public class dragAndDropTest {
         // Пример использования вместо actions() dragAndDrop()
         $("#column-a").dragAndDrop(to("#column-b"));
         $("#column-b").shouldHave(text("A"));
+
+        $("#column-b").dragAndDrop(to("#column-a"));
+        $("#column-a").shouldHave(text("A"));
     }
 }
